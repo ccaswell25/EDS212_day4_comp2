@@ -12,6 +12,8 @@ General Notes:
 
 -   Start with head() and skim() functions to get quick snapshots of the initial data and initial summary statistics
 
+-   With graphs, you can use the following to customize: color(), fill(), size(), alpha()
+
 ```{r}
 library(GGally)
 library(skimr)
@@ -54,4 +56,26 @@ skim(penguins)
 ```{r}
 ## If we want to look at a snapshot of relationships between variables with mini graphs, we can use the function ggpairs 
 ggpairs(penguins)
+```
+
+## Exploratory Charts in ggplot2
+
+Histogram:
+
+```{r}
+## Use a constant color
+ggplot(data = penguins, aes(x = flipper_length_mm)) + geom_histogram(fill = "green", color = "purple") + theme_minimal()
+
+## Color by variable
+ggplot(data = penguins, aes(x = flipper_length_mm)) + geom_histogram(aes(fill = species)) + theme_minimal()
+```
+
+Boxplot:
+
+```{r}
+ggplot(data = penguins, aes(x = species, y = bill_length_mm)) + geom_boxplot(fill = "red", aes (color =island)) + theme_dark() + geom_jitter(color = "turquoise", aes(size = bill_depth_mm), alpha = .5)
+
+## size = size of the dots in the chart
+## alpha = transparency
+## We can put this within aes if we want the color or size to change based on a variable
 ```
