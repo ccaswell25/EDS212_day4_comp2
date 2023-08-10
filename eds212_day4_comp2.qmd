@@ -1,0 +1,57 @@
+---
+title: "EDS212 Day 4 Comp 2"
+format: html
+editor: visual
+---
+
+## Data Exploration
+
+General Notes:
+
+-   Best practice, use the skimr package
+
+-   Start with head() and skim() functions to get quick snapshots of the initial data and initial summary statistics
+
+```{r}
+library(GGally)
+library(skimr)
+library(palmerpenguins)
+library(tidyverse)
+```
+
+First things first: Let's look at the dataset
+
+```{r}
+view(penguins)
+## We don't want this in our actual code because it is not best practice. Use the function head to get a snapshot of the first n lines of the data!
+```
+
+**Basics:**
+
+-   names: get variable names
+
+-   dim: get data dimensions
+
+-   head: get first n lines (6 by default) \*\*Best practice, always start with this
+
+-   tail: get last n lines (6 by default)
+
+-   summary: get basic summary statistics
+
+```{r}
+names(penguins)
+dim(penguins)
+head(penguins)
+tail(penguins)
+summary(penguins)
+```
+
+```{r}
+## Using skim! Great for initial data exploration
+skim(penguins)
+```
+
+```{r}
+## If we want to look at a snapshot of relationships between variables with mini graphs, we can use the function ggpairs 
+ggpairs(penguins)
+```
